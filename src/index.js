@@ -5,6 +5,7 @@ const TEST_ENV = process.env.NODE_ENV === 'test';
 const log = require('./lib/log');
 const movies = require('./lib/movies');
 const comments = require('./lib/comments');
+const schema = require('./schema');
 const HOST = process.env.HOST || '0.0.0.0';
 const PORT = parseInt(process.env.PORT || '1337');
 const API_URI = `http://www.omdbapi.com/?apikey=${process.env.API_KEY}&`;
@@ -61,67 +62,15 @@ db.on('connect', () => log.debug({ redis: REDIS.GetInfo() }, 'Connected to redis
 db.on('end', () => log.warn({ redis: REDIS.GetInfo() }, 'Disconnected from redis'));
 db.on('reconnecting', state => log.debug({ state: state, redis: REDIS.GetInfo() }, 'Reconnecting to redis'));
 
-server.addSchema({
-  $id: 'movie',
-  type: 'object',
-  properties: {
-    ID: { type: 'string' },
-    Title: { type: 'string' },
-    Year: { type: 'string' },
-    Rated: { type: 'string' },
-    Released: { type: 'string' },
-    Runtime: { type: 'string' },
-    Genre: { type: 'string' },
-    Director: { type: 'string' },
-    Writer: { type: 'string' },
-    Actors: { type: 'string' },
-    Plot: { type: 'string' },
-    Langugae: { type: 'string' },
-    Country: { type: 'string' },
-    Awards: { type: 'string' },
-    Poster: { type: 'string' },
-    Ratings: {
-      type: 'array',
-      items: {
-        type: 'object',
-        properties: {
-          Source: { type: 'string' },
-          Value: { type: 'string' },
-        },
-      },
-    },
-    Metascore: { type: 'string' },
-    imdbRating: { type: 'string' },
-    imdbVotes: { type: 'string' },
-    imdbID: { type: 'string' },
-    Type: { type: 'string' },
-    DVD: { type: 'string' },
-    BoxOffice: { type: 'string' },
-    Production: { type: 'string' },
-    Website: { type: 'string' },
-  },
-  required: ['ID', 'Title', 'Year', 'Director', 'Type'],
-});
-
-server.addSchema({
-  $id: 'comment',
-  type: 'object',
-  properties: {
-    id: { type: 'string' },
-    comment: { type: 'string' },
-  },
-  required: ['id', 'comment'],
-});
+server.addSchema(schema.movie);
+server.addSchema(schema.comment);
+server.addSchema(schema.movie_query);
 
 server.post(
   '/movies',
   {
     schema: {
-      body: {
-        type: 'object',
-        properties: { title: { type: 'string' } },
-        required: ['title'],
-      },
+      body: 'movie_query#',
       response: { 200: 'movie#' },
     },
   },
