@@ -1,0 +1,53 @@
+{
+  "name": "nodejs-recruitment-task",
+  "version": "0.1.0",
+  "description": "Basic movie database interacting with external API",
+  "keywords": [
+    "api",
+    "movies"
+  ],
+  "homepage": "https://github.com/michalpiekarski/nodejs-recruitment-task",
+  "bugs": {
+    "url": "https://github.com/michalpiekarski/nodejs-recruitment-task/issues",
+    "email": "michal.piekarski@icloud.com"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Michał Piekarski",
+    "email": "michal.piekarski@icloud.com"
+  },
+  "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/michalpiekarski/nodejs-recruitment-task.git"
+  },
+  "scripts": {
+    "lint": "eslint --format stylish --color src",
+    "test": "cross-env NODE_ENV=test _mocha --colors --reporter spec --check-leaks --exit",
+    "cover": "nyc yarn run test --reporter mochawesome --reporter-options reportDir=.test-report",
+    "start": "node src/",
+    "dev": "node --inspect src/"
+  },
+  "dependencies": {
+    "fastify": "^1.7.0",
+    "http-status-codes": "^1.3.0",
+    "pino": "^4.17.3",
+    "redis": "^2.8.0",
+    "request": "^2.87.0",
+    "shortid": "^2.2.8"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "cross-env": "^5.1.3",
+    "eslint-plugin-mocha": "^4.11.0",
+    "eslint": "^4.16.0",
+    "mocha": "^5.0.0",
+    "mochawesome": "^3.0.1",
+    "nyc": "^11.4.1"
+  },
+  "engines": {
+    "node": ">=8.10.0",
+    "npm": "^5.0.0",
+    "yarn": "^1.5.0"
+  }
+}
