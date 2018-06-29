@@ -1,5 +1,5 @@
 # Ignore environment configuration file
-.env.env
+.env
 
 
 # Ignore TypeScript build directory
