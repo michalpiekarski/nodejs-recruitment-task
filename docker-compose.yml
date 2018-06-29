@@ -1,0 +1,27 @@
+version: '3'
+services:
+  server:
+    image: server.prod
+    build:
+      context: .
+      dockerfile: dockerfile
+    env_file:
+      - .env
+    networks:
+      - redis
+      - external
+    ports:
+      - 8080:1337
+  redis:
+    image: redis:4-alpine
+    volumes:
+      - redis:/data
+    networks:
+      - redis
+volumes:
+  redis:
+networks:
+  redis:
+    internal: true
+  external:
+    driver: bridge

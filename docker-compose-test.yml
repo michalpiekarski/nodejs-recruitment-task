@@ -1,0 +1,28 @@
+version: '3'
+services:
+  server:
+    image: node:carbon-alpine
+    environment:
+      NODE_ENV: test
+    env_file:
+      - .env
+    networks:
+      - redis
+      - external
+    working_dir: /server
+    volumes:
+      - ./:/server
+    command: "/bin/sh -c 'yarn install && yarn run test'"
+  redis:
+    image: redis:4-alpine
+    volumes:
+      - redis:/data
+    networks:
+      - redis
+volumes:
+  redis:
+networks:
+  redis:
+    internal: true
+  external:
+    driver: bridge
