@@ -11,7 +11,7 @@ const PORT = parseInt(process.env.PORT || '1337');
 const API_URI = `http://www.omdbapi.com/?apikey=${process.env.API_KEY}&`;
 const REDIS = Object.freeze({
   URL: process.env.REDIS_URL,
-  HOST: process.env.REDIS_HOST || 'redis',
+  HOST: process.env.REDIS_HOST || 'localhost',
   PORT: parseInt(process.env.REDIS_PORT || '6379'),
   PASS: process.env.REDIS_PASSWORD || '',
   DB: parseInt(process.env.REDIS_DB || '0'),

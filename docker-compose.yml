@@ -5,6 +5,8 @@ services:
     build:
       context: .
       dockerfile: dockerfile
+    environment:
+      REDIS_HOST: redis
     env_file:
       - .env
     networks:

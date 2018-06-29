@@ -2,10 +2,11 @@ version: '3'
 services:
   server:
     image: node:carbon-alpine
-    environment:
-      NODE_ENV: test
     env_file:
       - .env
+    environment:
+      NODE_ENV: test
+      REDIS_HOST: redis
     networks:
       - redis
       - external
