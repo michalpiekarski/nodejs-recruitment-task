@@ -148,9 +148,7 @@ db.once('ready', () => {
         return;
       }
 
-      server.listen(PORT, HOST).then(address => {
-        log.info(`Server listening on ${address}`);
-
+      server.listen(PORT, HOST).then(() => {
         if (log.isLevelEnabled('debug')) {
           log.debug(`Server routes:\n${server.printRoutes()}`);
         }
