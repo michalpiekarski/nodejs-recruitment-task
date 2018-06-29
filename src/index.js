@@ -140,7 +140,7 @@ server.get(
       },
     },
   },
-  () => movies.GetMovies()
+  () => movies.GetMovies(db)
 );
 
 server.post(
