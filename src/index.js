@@ -10,6 +10,7 @@ const HOST = process.env.HOST || '0.0.0.0';
 const PORT = parseInt(process.env.PORT || '1337');
 const API_URI = `http://www.omdbapi.com/?apikey=${process.env.API_KEY}&`;
 const REDIS = Object.freeze({
+  URL: process.env.REDIS_URL,
   HOST: process.env.REDIS_HOST || 'redis',
   PORT: parseInt(process.env.REDIS_PORT || '6379'),
   PASS: process.env.REDIS_PASSWORD || '',
@@ -32,13 +33,18 @@ if (TEST_ENV) {
   module.exports = server;
 }
 
-const db = redis.createClient({
-  host: REDIS.HOST,
-  port: REDIS.PORT,
-  detect_buffers: true,
-  password: REDIS.PASS,
+const db_options = REDIS.URL ?
+  { url: REDIS.URL } :
+  {
+    host: REDIS.HOST,
+    port: REDIS.PORT,
+    password: REDIS.PASS,
+  };
+
+const db = redis.createClient(Object.assign(db_options, {
   db: REDIS.DB,
   prefix: REDIS.PREFIX,
+  detect_buffers: true,
   retry_strategy: options => {
     if (options.error && options.error.code !== 'ECONNREFUSED') {
       return options.error;
@@ -54,7 +60,7 @@ const db = redis.createClient({
 
     return Math.min(options.attempt * 100, REDIS.RETRY.WAIT);
   },
-});
+}));
 
 db.on('error', error => log.error({ error: error, redis: REDIS.GetInfo() }, 'Redis error'));
 db.on('warning', warning => log.warn({ warning: warning, redis: REDIS.GetInfo() }, 'Redis warning'));
