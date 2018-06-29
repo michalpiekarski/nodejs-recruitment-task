@@ -8,7 +8,7 @@
   "silent": false,
   "all": false,
   "exclude": [
-    "dist/**,
+    "dist/**",
     ".coverage/**",
     "test/**",
     "test{,-*}.js",
