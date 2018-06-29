@@ -4,7 +4,17 @@
   "description": "Basic movie database interacting with external API",
   "keywords": [
     "api",
-    "movies"
+    "movies",
+    "fastify",
+    "redis",
+    "pino",
+    "mocha",
+    "chai",
+    "nyc",
+    "cross-env",
+    "eslint",
+    "yarn",
+    "heroku"
   ],
   "homepage": "https://github.com/michalpiekarski/nodejs-recruitment-task",
   "bugs": {
