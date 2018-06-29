@@ -8,6 +8,16 @@
 		"[markdown]": {
 			"files.trimTrailingWhitespace": false
 		},
+		"[javascript]": {
+			"editor.insertSpaces": true,
+			"editor.tabSize": 2,
+			"editor.quickSuggestions": {
+				"other": true,
+				"comments": false,
+				"strings": true
+			},
+			"editor.autoIndent": false
+		},
 		"css.lint.compatibleVendorPrefixes": "warning",
 		"css.lint.duplicateProperties": "warning",
 		"css.lint.float": "warning",
