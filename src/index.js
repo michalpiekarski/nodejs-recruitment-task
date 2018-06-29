@@ -62,6 +62,7 @@ db.on('connect', () => log.debug({ redis: REDIS.GetInfo() }, 'Connected to redis
 db.on('end', () => log.warn({ redis: REDIS.GetInfo() }, 'Disconnected from redis'));
 db.on('reconnecting', state => log.debug({ state: state, redis: REDIS.GetInfo() }, 'Reconnecting to redis'));
 
+server.decorate('db', db);
 server.addSchema(schema.movie);
 server.addSchema(schema.comment);
 server.addSchema(schema.movie_query);
