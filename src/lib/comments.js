@@ -18,7 +18,7 @@ function SaveComment(db, comment) {
       if (exists === 0) {
         const result = new Error(`Cannot add comment to movie ${comment.id} - not found`);
         log.debug({ comment: comment }, result.message);
-        result.code = httpcodes.BAD_REQUEST;
+        result.statusCode = httpcodes.BAD_REQUEST;
         resolve(result);
       }
 

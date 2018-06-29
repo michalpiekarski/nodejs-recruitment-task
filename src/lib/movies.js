@@ -67,7 +67,7 @@ function SaveMovie(db, title, API_URI = `http://www.omdbapi.com/?apikey=${proces
 
         const result = new Error(`Movie ${title} not found in the remote api: ${body.Error}`);
         log.debug(result.message);
-        result.code = httpcodes.NOT_FOUND;
+        result.statusCode = httpcodes.NOT_FOUND;
         resolve(result);
       }
     );
