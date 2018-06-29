@@ -21,7 +21,7 @@ function SaveMovie(db, title, API_URI = `http://www.omdbapi.com/?apikey=${proces
           throw error;
         }
 
-        if (body.Response) {
+        if (body.Response === 'True') {
           body.ID = shortid.generate();
 
           db.hmset(
