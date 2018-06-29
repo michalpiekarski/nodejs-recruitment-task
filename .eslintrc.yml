@@ -1,0 +1,615 @@
+extends: eslint:recommended
+env:
+  es6: true
+  node: true
+  mocha: true
+parserOptions:
+  ecmaVersion: 2017
+  sourceType: module
+rules:
+  getter-return:
+    - error
+    - allowImplicit: true
+  no-cond-assign:
+    - error
+    - except-parens
+  no-extra-parens:
+    - error
+    - all
+    - conditionalAssign: true
+      returnAssign: false
+      nestedBinaryExpressions: false
+      enforceForArrowConditionals: false
+  no-irregular-whitespace:
+    - warn
+    - skipStrings: true
+      skipComments: false
+      skipRegExps: true
+      skipTemplates: true
+  no-template-curly-in-string:
+    - warn
+  accessor-pairs:
+    - error
+    - setWithoutGet: true
+      getWithoutSet: false
+  array-callback-return:
+    - error
+    - allowImplicit: true
+  class-methods-use-this:
+    - warn
+  complexity:
+    - warn
+    - 20
+  consistent-return:
+    - error
+    - treatUndefinedAsUnspecified: true
+  curly:
+    - error
+    - all
+  default-case:
+    - warn
+  dot-location:
+    - warn
+    - property
+  dot-notation:
+    - error
+    - allowKeywords: true
+      allowPattern: ^[a-zA-Z]+([_-][a-zA-Z]+)+$
+  eqeqeq:
+    - error
+    - smart
+  no-alert:
+    - error
+  no-div-regex:
+    - error
+  no-else-return:
+    - error
+    - allowElseIf: false
+  no-empty-function:
+    - warn
+    - allow:
+      - arrowFunctions
+      - constructors
+  no-eval:
+    - error
+  no-extra-bind:
+    - error
+  no-extra-label:
+    - error
+  no-floating-decimal:
+    - warn
+  no-implicit-coercion:
+    - error
+    - boolean: true
+      number: true
+      string: true
+  no-implicit-globals:
+    - error
+  no-implied-eval:
+    - error
+  no-invalid-this:
+    - error
+  no-iterator:
+    - error
+  no-lone-blocks:
+    - error
+  no-loop-func:
+    - warn
+  no-magic-numbers:
+    - warn
+    - ignore: [-2, -1, 0, 1, 2, 100, 1337, 6379]
+      ignoreArrayIndexes: true
+      enforceConst: false
+      detectObjects: false
+  no-multi-spaces:
+    - warn
+    - ignoreEOLComments: true
+      exceptions:
+        Property: true
+        BinaryExpression: false
+        VariableDeclarator: true
+        ImportDeclaration: true
+  no-multi-str:
+    - warn
+  no-new:
+    - error
+  no-new-func:
+    - error
+  no-octal-escape:
+    - error
+  no-param-reassign:
+    - error
+    - props: false
+  no-proto:
+    - error
+  no-return-assign:
+    - error
+    - except-parens
+  no-script-url:
+    - error
+  no-self-assign:
+    - error
+    - props: true
+  no-self-compare:
+    - error
+  no-sequences:
+    - error
+  no-throw-literal:
+    - error
+  no-unmodified-loop-condition:
+    - error
+  no-unused-expressions:
+    - error
+    - allowShortCircuit: false
+      allowTernary: false
+      allowTaggedTemplates: false
+  no-useless-call:
+    - error
+  no-useless-concat:
+    - error
+  no-useless-return:
+    - error
+  no-void:
+    - error
+  no-warning-comments:
+    - warn
+    - terms:
+      - todo
+      - fix
+      - hack
+      - bug
+      - info
+      location: start
+  no-with:
+    - error
+  prefer-promise-reject-errors:
+    - error
+    - allowEmptyReject: true
+  radix:
+    - error
+    - as-needed
+  require-await:
+    - error
+  wrap-iife:
+    - error
+    - outside
+    - functionPrototypeMethods: true
+  yoda:
+    - warn
+    - never
+    - exceptRange: true
+  strict:
+    - error
+    - safe
+  no-catch-shadow:
+    - error
+  no-label-var:
+    - error
+  no-shadow:
+    - error
+    - builtinGlobals: true
+      hoist: never
+  no-shadow-restricted-names:
+    - error
+  no-undef:
+    - error
+    - typeof: true
+  no-unused-vars:
+    - error
+    - vars: all
+      args: none
+      caughtErrors: all
+  no-use-before-define:
+    - error
+    - functions: false
+      classes: false
+      variables: true
+  callback-return:
+    - warn
+    - [
+      callback,
+      cb,
+      done,
+      next
+    ]
+  global-require:
+    - error
+  handle-callback-err:
+    - warn
+    - ^.*(e|E)rr
+  no-buffer-constructor:
+    - error
+  no-mixed-requires:
+    - warn
+    - grouping: true
+      allowCall: true
+  no-new-require:
+    - error
+  no-path-concat:
+    - error
+  no-process-exit:
+    - error
+  array-bracket-newline:
+    - warn
+    - multiline: true
+      minItems: null
+  array-bracket-spacing:
+    - warn
+    - never
+  array-element-newline:
+    - warn
+    - multiline: true
+      minItems: null
+  block-spacing:
+    - warn
+    - always
+  brace-style:
+    - warn
+    - 1tbs
+    - allowSingleLine: true
+  capitalized-comments:
+    - warn
+    - always
+    - ignoreInlineComments: true
+      ignoreConsecutiveComments: true
+  comma-dangle:
+    - warn
+    - arrays: always-multiline
+      objects: always-multiline
+      imports: only-multiline
+      exports: always-multiline
+      functions: never
+  comma-spacing:
+    - warn
+    - before: false
+      after: true
+  comma-style:
+    - warn
+    - last
+  computed-property-spacing:
+    - warn
+    - never
+  consistent-this:
+    - error
+    - that
+    - self
+  eol-last:
+    - error
+    - always
+  func-call-spacing:
+    - warn
+    - never
+  func-names:
+    - error
+    - as-needed
+  function-paren-newline:
+    - warn
+    - multiline
+  implicit-arrow-linebreak:
+    - warn
+    - beside
+  indent:
+    - warn
+    - 2
+    - SwitchCase: 1
+      VariableDeclarator:
+        var: 2
+        let: 2
+        const: 3
+      outerIIFEBody: 1
+      MemberExpression: 1
+      FunctionDeclaration:
+        body: 1
+        parameters: first
+      CallExpression:
+        arguments: first
+      ArrayExpression: first
+      ObjectExpression: first
+      ImportDeclaration: first
+      flatTernaryExpressions: true
+      ignoreComments: true
+  key-spacing:
+    - warn
+    - beforeColon: false
+      afterColon: true
+      mode: minimum
+  keyword-spacing:
+    - warn
+    - before: true
+      after: true
+  line-comment-position:
+    - warn
+    - position: beside
+      applyDefaultIgnorePatterns: true
+  linebreak-style:
+    - warn
+    - unix
+  lines-around-comment:
+    - warn
+    - beforeBlockComment: true
+      afterBlockComment: false
+      beforeLineComment: true
+      afterLineComment: false
+      allowBlockStart: true
+      allowBlockEnd: true
+      allowClassStart: true
+      allowClassEnd: true
+      allowObjectStart: true
+      allowObjectEnd: true
+      allowArrayStart: true
+      allowArrayEnd: true
+      applyDefaultIgnorePatterns: true
+  lines-between-class-members:
+    - warn
+    - always
+    - exceptAfterSingleLine: true
+  max-depth:
+    - warn
+    - 5
+  max-len:
+    - warn
+    - code: 140
+      tabWidth: 2
+      comments: 200
+      ignoreTrailingComments: true
+      ignoreUrls: false
+      ignoreStrings: false
+      ignoreTemplateLiterals: false
+      ignoreRegExpLiterals: false
+  max-lines:
+    - warn
+    - max: 500
+      skipBlankLines: true
+      skipComments: true
+  max-nested-callbacks:
+    - warn
+    - 5
+  max-params:
+    - warn
+    - 6
+  max-statements:
+    - warn
+    - 20
+    - ignoreTopLevelFunctions: true
+  max-statements-per-line:
+    - warn
+    - max: 1
+  multiline-comment-style:
+    - warn
+    - starred-block
+  multiline-ternary:
+    - warn
+    - always-multiline
+  new-cap:
+    - error
+    - newIsCap: true
+      capIsNew: false
+      properties: true
+  new-parens:
+    - error
+  newline-per-chained-call:
+    - warn
+    - ignoreChainWithDepth: 2
+  no-array-constructor:
+    - warn
+  no-bitwise:
+    - warn
+  no-lonely-if:
+    - warn
+  no-mixed-operators:
+    - error
+    - allowSamePrecedence: true
+  no-mixed-spaces-and-tabs:
+    - error
+  no-multi-assign:
+    - warn
+  no-multiple-empty-lines:
+    - warn
+    - max: 1
+      maxEOF: 1
+      maxBOF: 0
+  no-negated-condition:
+    - warn
+  no-new-object:
+    - error
+  no-plusplus:
+    - error
+    - allowForLoopAfterthoughts: true
+  no-trailing-spaces:
+    - warn
+    - skipBlankLines: false
+      ignoreComments: false
+  no-underscore-dangle:
+    - warn
+    - allowAfterThis: false
+      allowAfterSuper: false
+      enforceInMethodNames: true
+  no-unneeded-ternary:
+    - error
+    - defaultAssignment: true
+  no-whitespace-before-property:
+    - warn
+  object-curly-newline:
+    - warn
+    - multiline: true
+  object-curly-spacing:
+    - warn
+    - always
+  object-property-newline:
+    - warn
+    - allowMultiplePropertiesPerLine: true
+  one-var:
+    - error
+    - initialized: never
+      uninitialized: always
+  operator-assignment:
+    - warn
+    - always
+  operator-linebreak:
+    - warn
+    - after
+  padded-blocks:
+    - warn
+    - never
+  padding-line-between-statements:
+    - warn
+    - blankLine: always
+      prev: multiline-block-like
+      next: block-like
+    - blankLine: never
+      prev: cjs-import
+      next: cjs-import
+    - blankLine: never
+      prev: case
+      next: case
+    - blankLine: always
+      prev: directive
+      next: "*"
+    - blankLine: never
+      prev: directive
+      next: directive
+    - blankLine: any
+      prev:
+        - const
+        - let
+        - var
+      next:
+        - "*"
+    - blankLine: always
+      prev:
+        - const
+        - let
+        - var
+      next:
+        - case
+        - class
+        - default
+        - directive
+        - do
+        - for
+        - function
+        - if
+        - multiline-block-like
+        - switch
+        - try
+        - while
+        - with
+  quote-props:
+    - warn
+    - consistent-as-needed
+    - keywords: true
+  quotes:
+    - error
+    - single
+    - avoidEscape: true
+      allowTemplateLiterals: false
+  semi:
+    - error
+    - always
+    - omitLastInOneLineBlock: false
+  semi-spacing:
+    - warn
+    - before: false
+      after: true
+  semi-style:
+    - error
+    - last
+  space-before-blocks:
+    - warn
+    - always
+  space-before-function-paren:
+    - warn
+    - anonymous: always
+      named: never
+      asyncArrow: always
+  space-in-parens:
+    - warn
+    - never
+  space-infix-ops:
+    - warn
+    - int32Hint: true
+  space-unary-ops:
+    - warn
+    - words: true
+      nonwords: false
+  spaced-comment:
+    - warn
+    - always
+  switch-colon-spacing:
+    - warn
+    - before: false
+      after: true
+  template-tag-spacing:
+    - warn
+    - never
+  arrow-body-style:
+    - error
+    - as-needed
+    - requireReturnForObjectLiteral: false
+  arrow-parens:
+    - warn
+    - as-needed
+  arrow-spacing:
+    - warn
+    - before: true
+      after: true
+  generator-star-spacing:
+    - warn
+    - after
+  no-confusing-arrow:
+    - warn
+    - allowParens: true
+  no-const-assign:
+    - error
+  no-dupe-class-members:
+    - error
+  no-duplicate-imports:
+    - error
+    - includeExports: true
+  no-useless-computed-key:
+    - error
+  no-useless-constructor:
+    - error
+  no-useless-rename:
+    - error
+    - ignoreImport: false
+      ignoreExport: false
+      ignoreDestructuring: false
+  no-var:
+    - error
+  object-shorthand:
+    - error
+    - never
+  prefer-arrow-callback:
+    - error
+    - allowNamedFunctions: false
+      allowUnboundThis: false
+  prefer-const:
+    - error
+    - destructuring: all
+      ignoreReadBeforeAssign: true
+  prefer-destructuring:
+    - error
+    - array: false
+      object: true
+    - enforceForRenamedProperties: false
+  prefer-numeric-literals:
+    - error
+  prefer-rest-params:
+    - error
+  prefer-spread:
+    - error
+  prefer-template:
+    - error
+  rest-spread-spacing:
+    - warn
+    - never
+  sort-imports:
+    - warn
+    - ignoreCase: true
+      ignoreMemberSort: true
+      memberSyntaxSortOrder:
+        - all
+        - multiple
+        - single
+        - none
