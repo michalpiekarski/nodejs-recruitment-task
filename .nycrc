@@ -1,0 +1,54 @@
+{
+  "reporter": [
+    "text",
+    "text-summary",
+    "html"
+  ],
+  "report-dir": ".coverage",
+  "silent": false,
+  "all": false,
+  "exclude": [
+    "dist/**,
+    ".coverage/**",
+    "test/**",
+    "test{,-*}.js",
+    "**/*.test.js",
+    "**/__tests__/**",
+    "**/node_modules/**"
+  ],
+  "exclude-after-remap": true,
+  "include": [],
+  "require": [],
+  "eager": false,
+  "cache": true,
+  "extension": [],
+  "check-coverage": true,
+  "watermarks": {
+    "lines": [
+      80,
+      95
+    ],
+    "functions": [
+      80,
+      95
+    ],
+    "branches": [
+      80,
+      95
+    ],
+    "statements": [
+      80,
+      95
+    ]
+  },
+  "source-map": true,
+  "per-file": true,
+  "produce-source-map": true,
+  "instrument": true,
+  "hook-run-in-context": true,
+  "hook-run-in-this-context": true,
+  "show-process-tree": false,
+  "clean": true,
+  "nycrc-path": ".nycrc",
+  "temp-directory": ".nyc_output"
+}
