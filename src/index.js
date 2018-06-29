@@ -73,6 +73,40 @@ server.addSchema(schema.movie);
 server.addSchema(schema.comment);
 server.addSchema(schema.movie_query);
 
+server.get(
+  '/',
+  {
+    schema: {
+      response: {
+        200: {
+          type: 'array',
+          items: {
+            type: 'object',
+            properties: {
+              route: { type: 'string' },
+              description: { type: 'string' },
+            },
+          },
+        },
+      },
+    },
+  },
+  (req, res) => res.send([
+    {
+      route: '/movies',
+      description: 'POST application/json {"title":"movie title"} to add movies | GET to acquire all movies',
+    },
+    {
+      route: '/comments',
+      description: 'POST application/json {"id": "movie_id","comment":"your comment"} to add comment to movie | GET to acquire all comments',
+    },
+    {
+      route: '/comments/:movieID',
+      description: 'GET to acquire comments for specific movie',
+    },
+  ])
+);
+
 server.post(
   '/movies',
   {
